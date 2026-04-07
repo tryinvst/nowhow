@@ -1,5 +1,0 @@
-rootProject.name = 'demo'
-
-include 'userProfile'
-include 'commonModule'
-include 'elkModule'
