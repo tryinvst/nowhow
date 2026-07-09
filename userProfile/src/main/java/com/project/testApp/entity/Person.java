@@ -19,7 +19,7 @@ import java.util.List;
 @Entity
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String userName; //дедубликация на username
     private String password; //не менее 8 символов, 1 заглавная буква, 1 спец. символ

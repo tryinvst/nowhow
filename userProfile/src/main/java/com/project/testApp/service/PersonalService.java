@@ -15,15 +15,12 @@ import java.util.List;
 @Service
 public class PersonalService {
 
-    PersonRepository personRepository;
-    UserValidatiorUtil userValidatiorUtil;
+   private PersonRepository personRepository;
+   private UserValidatiorUtil userValidatiorUtil;
 
-    public PersonalService(UserValidatiorUtil userValidatiorUtil) {
+    public PersonalService(PersonRepository personRepository ,UserValidatiorUtil userValidatiorUtil) {
+        this.personRepository = personRepository;
         this.userValidatiorUtil = userValidatiorUtil;
-    }
-
-    public PersonalService(PersonRepository repository) {
-        this.personRepository = repository;
     }
 
     @Transactional
@@ -49,7 +46,7 @@ public class PersonalService {
     }
 
     public PersonResponseDto findPersonByUsername(String username) {
-       Person findThatPerson = personRepository.findByUsername(username);
+       Person findThatPerson = personRepository.findByUserName (username);
        PersonResponseDto personResponseDto = new PersonResponseDto (findThatPerson.getId(),
         findThatPerson.getPhoneNumber(),
         findThatPerson.getEmail(),
@@ -59,7 +56,7 @@ public class PersonalService {
     }
 
     public void putPerson (@RequestBody PersonRequestDto user) {
-        Person existingUser = personRepository.findByUsername(user.username());
+        Person existingUser = personRepository.findByUserName (user.username());
         Boolean isPasswordValid = userValidatiorUtil.password(user.password());
         if (existingUser == null || !isPasswordValid) {
             System.out.println("Пользователь не отредактирован");
