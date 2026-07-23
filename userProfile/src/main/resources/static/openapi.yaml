@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: User API
+  description: Пример API для управления пользователями
+  version: 1.0.0
+  contact:
+    name: Иван Иванов
+    email: ivan@example.com
+servers:
+  - url: https://api.example.com/v1
+    description: Продакшн сервер
+  - url: http://localhost:8080
+    description: Локальный сервер для разработки
+
+paths:
+  /users:
+    get:
+      summary: Получить список всех пользователей
+      operationId: getUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Создать нового пользователя
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '201':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Неверные данные
+
+  /users/{id}:
+    get:
+      summary: Получить пользователя по ID
+      operationId: getUserById
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: Идентификатор пользователя
+      responses:
+        '200':
+          description: Найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Пользователь не найден
+    put:
+      summary: Обновить пользователя
+      operationId: updateUser
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: Обновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Не найден
+    delete:
+      summary: Удалить пользователя
+      operationId: deleteUser
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Удалено (без содержимого)
+        '404':
+          description: Не найден
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: Уникальный идентификатор
+        name:
+          type: string
+          example: Иван Петров
+          description: Полное имя
+        email:
+          type: string
+          format: email
+          example: ivan@example.com
+      required:
+        - id
+        - name
+        - email
+
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Иван Петров
+        email:
+          type: string
+          format: email
+          example: ivan@example.com
+      required:
+        - name
+        - email
+  # (Опционально) Если нужна аутентификация, раскомментируйте:
+  # securitySchemes:
+  #   bearerAuth:
+  #     type: http
+  #     scheme: bearer
+  #     bearerFormat: JWT
+# security:
+#   - bearerAuth: []
