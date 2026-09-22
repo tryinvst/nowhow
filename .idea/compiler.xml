@@ -10,6 +10,7 @@
         <module name="testApp.elkModule.main" />
         <module name="testApp.userProfile.main" />
         <module name="testApp.main" />
+        <module name="testApp.main-video-page.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
@@ -21,6 +22,9 @@
       <module name="testApp.elkModule.main" options="-parameters" />
       <module name="testApp.elkModule.test" options="-parameters" />
       <module name="testApp.main" options="-parameters" />
+      <module name="testApp.main-video-page" options="-parameters" />
+      <module name="testApp.main-video-page.main" options="-parameters" />
+      <module name="testApp.main-video-page.test" options="-parameters" />
       <module name="testApp.test" options="-parameters" />
       <module name="testApp.userProfile" options="-parameters" />
       <module name="testApp.userProfile.main" options="-parameters" />

@@ -2,3 +2,5 @@ rootProject.name = 'testApp'
 include 'commonModule'
 include 'elkModule'
 include 'userProfile'
+
+include 'main-video-page'

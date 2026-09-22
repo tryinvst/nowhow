@@ -25,6 +25,14 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
 }
 
+openApiGenerate {
+    generatorName.set("spring")
+    inputSpec.set("$projectDir/src/main/resources/openapi.yaml")
+    outputDir.set("$buildDir/generated")
+    apiPackage.set("com.project.testapp.api")
+    modelPackage.set("com.project.testapp.dto")
+}
+
 test {
     useJUnitPlatform()
 }

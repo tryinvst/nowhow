@@ -14,6 +14,5 @@ public OpenAPI customOpenApi () {
     return new OpenAPI().info (new io.swagger.v3.oas.models.info.Info().title("мой API")
       .version ( "1.0.0" )
       .description("документация"));
-
 }
 }
