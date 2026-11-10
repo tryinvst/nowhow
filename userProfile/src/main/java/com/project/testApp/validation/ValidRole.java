@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidRole {
-    String message() default "Роль должна быть одной из: user, admin, developeradmin";
+    String message() default "Роль должна быть одной из: master, student";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     boolean nullable() default false;

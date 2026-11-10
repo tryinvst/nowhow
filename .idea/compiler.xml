@@ -9,8 +9,6 @@
         </processorPath>
         <module name="testApp.elkModule.main" />
         <module name="testApp.userProfile.main" />
-        <module name="testApp.main" />
-        <module name="testApp.main-video-page.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
@@ -18,6 +16,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="testApp" options="-parameters" />
+      <module name="testApp.billing" options="-parameters" />
+      <module name="testApp.billing.main" options="-parameters" />
+      <module name="testApp.billing.test" options="-parameters" />
       <module name="testApp.elkModule" options="-parameters" />
       <module name="testApp.elkModule.main" options="-parameters" />
       <module name="testApp.elkModule.test" options="-parameters" />

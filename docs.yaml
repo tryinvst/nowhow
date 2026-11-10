@@ -1,0 +1,18 @@
+/** 1. сделать web-морду на весь сервис по загрузке видео пользователем
+2.1 Предложить валидацию номера телефона пользователя через подтверждения кодом
+3. Модуль поиска роликов и системы рекомендации (поиск по ключевым словам)
+4. Раздели front-end и back-end на 2 отдельных репозитория
+5. Написать автотесты для api-middle ручек всех сервисов 
+9. Все record классы и enum - вынести из классов - в отдельные классы
+  10. Переделать Swagger Config - вместо использования анотаций, сделать yaml-файл
+для документации
+  11. Вынести статические вычисления в константы (пример private static final long MAX_SIZE = 5 * 1024 * 1024;)
+12. private static final Set<String> ALLOWED_ROLES = Set.of("master", "student"); - 
+  заменить на enum'ы 
+13. videoRepository.saveAll(lessons);
+flagRepository.deleteAllByCourseId(id);
+courseRepository.delete(course); - добавить каскадность (в модуле main-video-page)
+  14. package com.project.service.Videomaper - добавить MapStruct
+15. Исправить application.properties, вынести переменные сред и окружения в отдельный файл
+  16. Для каждого модуля сделать свои отдельные файлы переменных сред окружения, а также
+добавить example-файл**/

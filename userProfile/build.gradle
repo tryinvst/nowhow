@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(':commonModule')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -23,6 +24,9 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 openApiGenerate {
@@ -35,4 +39,9 @@ openApiGenerate {
 
 test {
     useJUnitPlatform()
+}
+
+//запуск из корня App-new: uploads/ и models/ лежат там (как при запуске из IDEA)
+tasks.named('bootRun') {
+    workingDir = rootProject.projectDir
 }

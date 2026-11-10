@@ -1,12 +1,13 @@
 package com.project.testApp.util;
 
-
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-//проверка пароля на валидацию
+/**
+ * Проверка пароля на валидацию.
+ */
 @Component
 public class UserValidatiorUtil {
  public boolean password (String password) {

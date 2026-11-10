@@ -1,7 +1,12 @@
 package com.project.testApp.entity;
 
+import com.project.common.Category;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,11 +26,40 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String userName; //дедубликация на username
-    private String password; //не менее 8 символов, 1 заглавная буква, 1 спец. символ
-    private String phoneNumber; //в международном формате, до 14 символов
-    private String email; // обязательно содержит собачку
+    /**
+     * Дедубликация на username.
+     */
+    private String userName;
+    /**
+     * Хранится только BCrypt-хэш, наружу не отдаётся.
+     * <p>Не менее 8 символов, 1 заглавная буква, 1 спец. символ.
+     */
+    @JsonIgnore
+    private String password;
+    /**
+     * В международном формате, до 14 символов.
+     */
+    private String phoneNumber;
+    /**
+     * Обязательно содержит собачку.
+     */
+    private String email;
+    /**
+     * Строкой, чтобы новые роли не сдвигали номера.
+     */
+    @Enumerated(EnumType.STRING)
     private Roles personRoles;
+
+    /**
+     * Публичный профиль мастера (у учеников не показывается)
+     */
+    private String displayName;
+    @Enumerated(EnumType.STRING)
+    private Category specialization;
+    @Column(length = 2000)
+    private String about;
+    private Integer experienceYears;
+    private String avatarStorageFilename;
 
     public String getUserName() {
         return userName;
